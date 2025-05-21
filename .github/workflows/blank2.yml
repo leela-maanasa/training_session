@@ -14,6 +14,6 @@ jobs:
         GITHUB_TOKEN: ${{secrets.GH_PAT}}
       run: |
         PR_NUMBER=${{github.event.pull_request.number}}
-        curl: -X POST -H "authorization: token $GITHUB_TOKEN"\
+        curl -X POST -H "authorization: token $GITHUB_TOKEN"\
         -d "{"body": "Thanks for the pr"}"\
         https://github.com/leela-maanasa/training_session/issues/$PR_NUMBER/comments
