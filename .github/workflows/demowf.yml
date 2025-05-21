@@ -13,8 +13,17 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: make changes
+        run: |
+          git config --global user.email "leelamaanasa.n@gmail.com"
+          git config --global user.name "leela-maanasa"
+
+          echo "New changes" >> changes.txt
+          git add changes.txt
+          git commit -m "add changes"
+
       - name: Use GitHub API with PAT
         env:
           GITHUB_TOKEN: ${{secrets.GH_PAT}}
         run: |
-          curl  -H "Authorization: token $GITHUB_TOKEN" https://api.github.com/user
+          git push origin feature-branch
